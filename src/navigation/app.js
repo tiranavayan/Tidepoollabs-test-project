@@ -21,7 +21,7 @@ const App = () => {
           activeTintColor: 'rgba(255,255,255, 1)',
           inactiveTintColor: 'rgba(255,255,255, 0.5)',
           labelStyle: {
-            fontSize: 16,
+            fontSize: 14,
           },
           style: {
             backgroundColor: 'transparent',
@@ -33,8 +33,8 @@ const App = () => {
             height: 100
           },
           tabStyle: {
-            backgroundColor: 'rgba(0,0,0, 0.5)',
-            paddingBottom: 10,
+            backgroundColor: 'rgba(0,0,0, 0.8)',
+            paddingBottom: 14,
           },
         }}
         screenOptions={{

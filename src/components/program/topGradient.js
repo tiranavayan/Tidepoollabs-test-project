@@ -2,6 +2,10 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
+const moon = require('src/assets/icons/moon.png');
+const slesh = require('src/assets/icons/slesh.png');
+const back = require('src/assets/icons/back.png');
+
 const { width } = Dimensions.get('window');
 
 export default TopGradient = () => {
@@ -10,37 +14,107 @@ export default TopGradient = () => {
       start={{ x: 0, y: 0 }}
       end={{ x: 0, y: 1 }}
       colors={['rgba(0,0,0,0.5)', 'rgba(0,0,0,0.5)', 'rgba(0,0,0,1)']}
-      style={{
-        height: 280,
-        width: width,
-        paddingRight: 0,
-        paddingTop: 50,
-      }}
+      style={styles.linearGradient}
     >
-      <View style={{ width, flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+      <View style={styles.titleWrapper}>
         <Image
-          source={{ uri: 'https://picsum.photos/200/300' }}
-          style={{ width: 30, height: 30, marginRight: 10 }}
+          source={back}
+          style={styles.backIcon}
         />
-        <Text style={{ color: 'white', fontSize: 30 }}>
+        <Image
+          source={moon}
+          style={styles.image}
+        />
+        <Text style={styles.title}>
           MoonDust
         </Text>
       </View>
-      <Text style={{ color: 'white', fontSize: 20, marginTop: 25, letterSpacing: 4, textAlign: 'center' }}>
+      <Text style={styles.subTitle}>
         YOUR PROGRAM
       </Text>
-      <View style={{ width, flexDirection: 'row', justifyContent: 'center', marginTop: 15 }}>
-        <Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold', marginTop: 20 }}>Week 2</Text>
-        <Text style={{ color: 'white', fontSize: 60 }}> / </Text>
-        <Text style={{ color: 'white', fontSize: 25, marginTop: 30 }}>Day 3</Text>
+      <View style={styles.dayWrapper}>
+        <Text style={styles.weekText}>Week 2</Text>
+        <Image
+          source={slesh}
+          style={styles.slesh}
+        />
+        <Text style={styles.dayText}>Day 3</Text>
       </View>
-      <View style={{ height: 5, width: width - 40, backgroundColor: '#555', marginTop: 10, marginLeft: 20, borderRadius: 2 }}>
-        <View style={{ height: 5, width: (width - 40) / 7 * 3, backgroundColor: '#fff', borderRadius: 2 }} />
+      <View style={styles.progressWrapper}>
+        <View style={[styles.progress, { width: (width - 40) / 7 * 3 }]} />
       </View>
     </LinearGradient>
   )
 };
 
 const styles = StyleSheet.create({
-
+  linearGradient: {
+    height: 280,
+    width: width,
+    paddingRight: 0,
+    paddingTop: 50,
+  },
+  titleWrapper: {
+    width,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative'
+  },
+  backIcon: {
+    position: 'absolute',
+    left: 30,
+    height: 35,
+    width: 30
+  },
+  image: {
+    width: 27,
+    height: 27,
+    marginRight: 5
+  },
+  title: {
+    color: '#eee',
+    fontSize: 27,
+  },
+  subTitle: {
+    color: '#ccc',
+    fontSize: 17,
+    marginTop: 25,
+    letterSpacing: 4,
+    textAlign: 'center'
+  },
+  dayWrapper: {
+    width,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 35,
+  },
+  weekText: {
+    color: 'white',
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginTop: 0
+  },
+  dayText: {
+    color: 'white',
+    fontSize: 25,
+    marginTop: 10
+  },
+  slesh: {
+    width: 30,
+    height: 50
+  },
+  progressWrapper: {
+    height: 5,
+    width: width - 40,
+    backgroundColor: '#555',
+    marginTop: 25,
+    marginLeft: 20,
+    borderRadius: 2
+  },
+  progress: {
+    height: 5,
+    backgroundColor: '#fff',
+    borderRadius: 2
+  }
 });
