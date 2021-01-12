@@ -10,10 +10,11 @@ import {
 const { width } = Dimensions.get('window');
 
 const loadIcon = require('src/assets/icons/refresh.png');
- const LessonItem = () => (
+
+const LessonItem = ({ onPress }) => (
   <TouchableOpacity
     style={styles.container}
-    onPress={() => {}}
+    onPress={onPress}
     activeOpacity={0.5}>
     <Text style={styles.text}>Load more lessons</Text>
     <Image source={loadIcon} style={styles.image} />

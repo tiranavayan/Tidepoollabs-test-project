@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  View,
   Text,
   Image,
   Dimensions,
@@ -11,14 +12,20 @@ const { width } = Dimensions.get('window');
 
 const loadIcon = require('src/assets/icons/refresh.png');
 
-const LoadMoreActivity = () => (
-  <TouchableOpacity
-    style={styles.container}
-    onPress={() => {}}
-    activeOpacity={0.5}>
-    <Text style={styles.text}>Load more activities</Text>
-    <Image source={loadIcon} style={styles.image} />
-  </TouchableOpacity>
+const LoadMoreActivity = ({ onPress, showMore }) => (
+  <>
+    {showMore ? (
+      <TouchableOpacity
+        style={styles.container}
+        onPress={onPress}
+        activeOpacity={0.5}>
+        <Text style={styles.text}>Load more activities</Text>
+        <Image source={loadIcon} style={styles.image} />
+      </TouchableOpacity>
+    ) : (
+      <View style={styles.emptyComponent} />
+    )}
+  </>
 );
 
 const styles = StyleSheet.create({
@@ -41,6 +48,9 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     marginLeft: 10,
+  },
+  emptyComponent: {
+    marginBottom: 110,
   },
 });
 

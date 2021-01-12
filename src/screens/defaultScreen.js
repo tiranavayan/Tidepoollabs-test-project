@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  View,
   SafeAreaView,
   ImageBackground,
   StatusBar,
@@ -9,21 +10,27 @@ const backgroundImage = require('src/assets/images/background.jpg');
 
 const DefaultScreen = () => {
   return (
-    <SafeAreaView style={styles.containerWrapper}>
-      <StatusBar
-        barStyle="light-content"
-        backgroundColor={'transparent'}
-        translucent={true}
-      />
-      <ImageBackground
-        source={backgroundImage}
-        style={styles.container}
-        imageStyle={{ resizeMode: 'cover' }} />
-    </SafeAreaView>
+    <View style={styles.appContainer}>
+      <SafeAreaView style={styles.containerWrapper}>
+        <StatusBar
+          barStyle="light-content"
+          backgroundColor={'transparent'}
+          translucent={true}
+        />
+        <ImageBackground
+          source={backgroundImage}
+          style={styles.container}
+          imageStyle={{ resizeMode: 'cover' }} />
+      </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  appContainer: {
+    flex: 1,
+    backgroundColor: '#000',
+  },
   containerWrapper: {
     flex: 1,
   },

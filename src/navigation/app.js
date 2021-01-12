@@ -1,14 +1,14 @@
-import 'react-native-gesture-handler';
 import React from 'react';
+import 'react-native-gesture-handler';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import DeviceInfo from 'react-native-device-info';
 import Tabs from 'src/constants/tabs';
 import { TabIcon } from 'src/components/ui';
 import { DefaultScreen, ProgramScreen } from 'src/screens';
 
 const Tab = createBottomTabNavigator();
-console.disableYellowBox = true;
 
 const App = () => {
   return (
@@ -17,7 +17,7 @@ const App = () => {
         initialRouteName="Program"
         backBehavior="none"
         tabBarOptions={{
-          activeTintColor: 'rgba(255,255,255, 1)',
+          activeTintColor: '#fff',
           inactiveTintColor: 'rgba(255,255,255, 0.5)',
           labelStyle: {
             fontSize: 14,
@@ -29,7 +29,7 @@ const App = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            height: 100,
+            height: DeviceInfo.hasNotch() ? 130 : 100,
           },
           tabStyle: {
             backgroundColor: 'rgba(0,0,0, 0.8)',
@@ -39,17 +39,11 @@ const App = () => {
         screenOptions={{
           headerShown: false,
         }}>
-        {Tabs().map((value) => (
+        {Tabs()?.map((value) => (
           <Tab.Screen
-            key={value.name}
-            name={value.name}
-            component={() =>
-              value.name === 'Program' ? (
-                <ProgramScreen />
-              ) : (
-                <DefaultScreen />
-              )
-            }
+            key={value?.name}
+            name={value?.name}
+            component={value.name === 'Program' ? ProgramScreen : DefaultScreen}
             options={{
               unmountOnBlur: false,
               tabBarLabel: value.name,

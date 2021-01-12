@@ -16,8 +16,10 @@ const LessonItem = ({ item }) => (
       source={background}
       imageStyle={{ resizeMode: 'cover' }}
       style={styles.ImageBackground}>
-      <Text style={styles.numberText}>{item.number}</Text>
-      <Text style={styles.titleText}>{item.title}</Text>
+      <Text style={styles.numberText}>{item.uuid}</Text>
+      <Text style={styles.titleText} numberOfLines={2} ellipsizeMode={'tail'}>
+        {item.description}
+      </Text>
     </ImageBackground>
   </View>
 );

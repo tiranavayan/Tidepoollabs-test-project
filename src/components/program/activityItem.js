@@ -6,12 +6,14 @@ const { width } = Dimensions.get('window');
 const ActivityItem = ({ item }) => (
   <View style={styles.container}>
     <Image
-      source={{ uri: 'https://picsum.photos/200/300' }}
+      source={{ uri: item.image }}
       style={styles.image}
     />
-    <View>
+    <View style={styles.textWrapper}>
       <Text style={styles.title}>{item.title}</Text>
-      <Text style={styles.text}>{item.text}</Text>
+      <Text style={styles.text} numberOfLines={2} ellipsizeMode={'tail'}>
+        {item.description}
+      </Text>
     </View>
   </View>
 );
@@ -31,6 +33,9 @@ const styles = StyleSheet.create({
     width: 55,
     height: 55,
     marginHorizontal: 10,
+  },
+  textWrapper: {
+    width: width - 95,
   },
   title: {
     color: 'white',

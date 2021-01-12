@@ -1,13 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 
-import {
-  TopGradient,
-  LessonItem,
-  LoadMoreLessons,
-} from 'src/components/program';
+import TopGradient from 'src/components/program/topGradient';
+import LessonItem from 'src/components/program/lessonItem';
+import LoadMoreLessons from 'src/components/program/loadMoreLessons';
+
+import { getLessons } from 'src/services/lessonsSvc';
 
 const Header = () => {
+  const [lessons, setlessons] = useState([]);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
+
+  const upLessonsCount = useCallback(() => {
+    getLessons({ page, count: 10 }).then((response) => {
+      setlessons((currentLessons) => [...currentLessons, ...response.lessons]);
+      setPage((currentPage) => currentPage + 1);
+      if (!total) {
+        setTotal(response.total);
+      }
+    });
+  }, [page, total]);
+
+  useEffect(() => {
+    upLessonsCount();
+  }, []);
+
   return (
     <View>
       <TopGradient />
@@ -17,17 +35,13 @@ const Header = () => {
       </Text>
       <Text style={styles.title}>Lessons</Text>
       <FlatList
-        data={[
-          { key: 1, number: '1.1', title: 'Understanding Sleep' },
-          { key: 2, number: '1.1', title: 'Understanding Sleep' },
-          { key: 3, number: '1.1', title: 'Understanding Sleep' },
-          { key: 4, number: '1.1', title: 'Understanding Sleep' },
-          { key: 5, number: '1.1', title: 'Understanding Sleep' },
-        ]}
+        data={lessons}
         renderItem={LessonItem}
-        keyExtractor={(item) => item.key}
+        keyExtractor={(item) => `${item.id} ${item.uuid}`}
         horizontal={true}
-        ListFooterComponent={LoadMoreLessons}
+        ListFooterComponent={() => (
+          lessons.length < total ? <LoadMoreLessons onPress={upLessonsCount} /> : null
+        )}
       />
       <Text style={styles.title}>Activities</Text>
     </View>
