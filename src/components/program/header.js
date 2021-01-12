@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 
-import { TopGradient, LessonItem } from 'src/components/program';
+import { TopGradient, LessonItem, LoadMoreLessons } from 'src/components/program';
 
 export default Header = () => {
   return (
@@ -27,6 +27,7 @@ export default Header = () => {
         renderItem={LessonItem}
         keyExtractor={item => item.key}
         horizontal={true}
+        ListFooterComponent={LoadMoreLessons}
       />
       <Text style={styles.title}>
         Activities

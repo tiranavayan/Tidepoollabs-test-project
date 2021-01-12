@@ -30,14 +30,6 @@ const styles = StyleSheet.create({
     marginBottom: 7,
     flexDirection: 'row',
     alignItems: 'center',
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 5,
-    shadowRadius: 10,
-    elevation: 0,
   },
   image: {
     width: 55,

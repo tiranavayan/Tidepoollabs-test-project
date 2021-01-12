@@ -6,7 +6,7 @@ import {
   StyleSheet,
   FlatList,
 } from 'react-native';
-import { Header, ActivityItem, Footer } from 'src/components/program';
+import { Header, ActivityItem, LoadMoreActivity } from 'src/components/program';
 
 const backgroundImage = require('src/assets/images/background.jpg');
 
@@ -34,7 +34,7 @@ export default ProgramScreen = ({ title }) => {
           renderItem={ActivityItem}
           keyExtractor={item => item.key}
           ListHeaderComponent={Header}
-          ListFooterComponent={Footer}
+          ListFooterComponent={LoadMoreActivity}
         />
       </ImageBackground>
     </SafeAreaView>
