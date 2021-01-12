@@ -56,7 +56,11 @@ const App = () => {
               unmountOnBlur: false,
               tabBarLabel: value.name,
               tabBarIcon: ({ focused }) => (
-                <TabIcon icon={value.icon} focused={focused} />
+                <TabIcon
+                  icon={value.icon}
+                  iconActive={value.iconActive}
+                  focused={focused}
+                />
               ),
             }}
           />
