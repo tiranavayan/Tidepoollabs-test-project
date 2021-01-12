@@ -11,28 +11,28 @@ const trackerActive = require('src/assets/icons/trackerActive.png');
 
 export default () => [
   {
-    name: "Home",
+    name: 'Home',
     icon: home,
-    iconActive: homeActive
+    iconActive: homeActive,
   },
   {
-    name: "Journal",
+    name: 'Journal',
     icon: book,
-    iconActive: bookActive
+    iconActive: bookActive,
   },
   {
-    name: "Program",
+    name: 'Program',
     icon: moon,
-    iconActive: moonActive
+    iconActive: moonActive,
   },
   {
-    name: "Media",
+    name: 'Media',
     icon: music,
-    iconActive: musicActive
+    iconActive: musicActive,
   },
   {
-    name: "Tracker",
+    name: 'Tracker',
     icon: tracker,
-    iconActive: trackerActive
+    iconActive: trackerActive,
   },
 ];

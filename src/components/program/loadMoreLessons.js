@@ -1,23 +1,22 @@
 import React from 'react';
-import { TouchableOpacity, Text, Dimensions, Image, StyleSheet } from 'react-native';
+import {
+  TouchableOpacity,
+  Text,
+  Dimensions,
+  Image,
+  StyleSheet,
+} from 'react-native';
 
 const { width } = Dimensions.get('window');
 
 const loadIcon = require('src/assets/icons/refresh.png');
-
-export default LessonItem = () => (
+ const LessonItem = () => (
   <TouchableOpacity
     style={styles.container}
-    onPress={() => { }}
-    activeOpacity={0.5}
-  >
-    <Text style={styles.text}>
-      Load more lessons
-    </Text>
-    <Image
-      source={loadIcon}
-      style={styles.image}
-    />
+    onPress={() => {}}
+    activeOpacity={0.5}>
+    <Text style={styles.text}>Load more lessons</Text>
+    <Image source={loadIcon} style={styles.image} />
   </TouchableOpacity>
 );
 
@@ -36,10 +35,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     textAlign: 'center',
     color: '#ccc',
-    fontSize: 15
+    fontSize: 15,
   },
   image: {
     width: 30,
     height: 30,
-  }
+  },
 });
+
+export default LessonItem;

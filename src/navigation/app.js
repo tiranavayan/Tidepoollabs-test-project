@@ -11,7 +11,6 @@ const Tab = createBottomTabNavigator();
 console.disableYellowBox = true;
 
 const App = () => {
-
   return (
     <NavigationContainer>
       <Tab.Navigator
@@ -30,7 +29,7 @@ const App = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            height: 100
+            height: 100,
           },
           tabStyle: {
             backgroundColor: 'rgba(0,0,0, 0.8)',
@@ -38,20 +37,19 @@ const App = () => {
           },
         }}
         screenOptions={{
-          headerShown: false
-        }}
-      >
+          headerShown: false,
+        }}>
         {Tabs().map((value) => (
           <Tab.Screen
             key={value.name}
             name={value.name}
-            component={() => (
+            component={() =>
               value.name === 'Program' ? (
                 <ProgramScreen />
               ) : (
-                  <DefaultScreen title={value.name} />
-                )
-            )}
+                <DefaultScreen />
+              )
+            }
             options={{
               unmountOnBlur: false,
               tabBarLabel: value.name,
@@ -64,11 +62,10 @@ const App = () => {
               ),
             }}
           />
-
         ))}
       </Tab.Navigator>
     </NavigationContainer>
   );
-}
+};
 
 export default App;

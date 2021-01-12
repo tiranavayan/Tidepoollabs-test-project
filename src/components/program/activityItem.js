@@ -3,19 +3,15 @@ import { View, Text, Image, Dimensions, StyleSheet } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
-export default ActivityItem = ({ item }) => (
+const ActivityItem = ({ item }) => (
   <View style={styles.container}>
     <Image
       source={{ uri: 'https://picsum.photos/200/300' }}
       style={styles.image}
     />
     <View>
-      <Text style={styles.title}>
-        {item.title}
-      </Text>
-      <Text style={styles.text}>
-        {item.text}
-      </Text>
+      <Text style={styles.title}>{item.title}</Text>
+      <Text style={styles.text}>{item.text}</Text>
     </View>
   </View>
 );
@@ -34,15 +30,17 @@ const styles = StyleSheet.create({
   image: {
     width: 55,
     height: 55,
-    marginHorizontal: 10
+    marginHorizontal: 10,
   },
   title: {
     color: 'white',
     fontSize: 17,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   text: {
     color: '#ccc',
-    fontSize: 15
-  }
+    fontSize: 15,
+  },
 });
+
+export default ActivityItem;

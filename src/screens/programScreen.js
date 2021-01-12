@@ -10,9 +10,9 @@ import { Header, ActivityItem, LoadMoreActivity } from 'src/components/program';
 
 const backgroundImage = require('src/assets/images/background.jpg');
 
-export default ProgramScreen = ({ title }) => {
+const ProgramScreen = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={styles.containerWrapper}>
       <StatusBar
         barStyle="light-content"
         backgroundColor={'transparent'}
@@ -21,30 +21,54 @@ export default ProgramScreen = ({ title }) => {
       <ImageBackground
         source={backgroundImage}
         style={styles.container}
-        imageStyle={{ resizeMode: 'cover' }}
-      >
+        imageStyle={{ resizeMode: 'cover' }}>
         <FlatList
           data={[
-            { key: 1, title: 'MoonDust Activity Guide', text: 'Lorem ipsum dolor sit amet.' },
-            { key: 2, title: 'Understanding Sleep', text: 'Lorem ipsum dolor sit amet.' },
-            { key: 3, title: 'Understanding Sleep', text: 'Lorem ipsum dolor sit amet.' },
-            { key: 4, title: 'Understanding Sleep', text: 'Lorem ipsum dolor sit amet.' },
-            { key: 5, title: 'Understanding Sleep', text: 'Lorem ipsum dolor sit amet.' },
+            {
+              key: 1,
+              title: 'MoonDust Activity Guide',
+              text: 'Lorem ipsum dolor sit amet.',
+            },
+            {
+              key: 2,
+              title: 'Understanding Sleep',
+              text: 'Lorem ipsum dolor sit amet.',
+            },
+            {
+              key: 3,
+              title: 'Understanding Sleep',
+              text: 'Lorem ipsum dolor sit amet.',
+            },
+            {
+              key: 4,
+              title: 'Understanding Sleep',
+              text: 'Lorem ipsum dolor sit amet.',
+            },
+            {
+              key: 5,
+              title: 'Understanding Sleep',
+              text: 'Lorem ipsum dolor sit amet.',
+            },
           ]}
           renderItem={ActivityItem}
-          keyExtractor={item => item.key}
+          keyExtractor={(item) => item.key}
           ListHeaderComponent={Header}
           ListFooterComponent={LoadMoreActivity}
         />
       </ImageBackground>
     </SafeAreaView>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
+  containerWrapper: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
 });
+
+export default ProgramScreen;

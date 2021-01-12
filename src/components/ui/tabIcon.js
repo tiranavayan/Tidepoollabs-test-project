@@ -1,11 +1,20 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, StyleSheet } from 'react-native';
 
-export default TabIcon = ({ icon, iconActive, focused }) => {
+const TabIcon = ({ icon, iconActive, focused }) => {
   return (
     <Image
-      style={{ width: 37, height: 37 }}
+      style={styles.tabIcon}
       source={focused ? iconActive : icon}
     />
-  )
+  );
 };
+
+const styles = StyleSheet.create({
+  tabIcon: {
+    width: 37,
+    height: 37,
+  },
+});
+
+export default TabIcon;

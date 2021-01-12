@@ -1,16 +1,15 @@
 import React from 'react';
 import {
   SafeAreaView,
-  Text,
   ImageBackground,
   StatusBar,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 const backgroundImage = require('src/assets/images/background.jpg');
 
-export default DefaultScreen = ({ title }) => {
+const DefaultScreen = () => {
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={styles.containerWrapper}>
       <StatusBar
         barStyle="light-content"
         backgroundColor={'transparent'}
@@ -19,17 +18,15 @@ export default DefaultScreen = ({ title }) => {
       <ImageBackground
         source={backgroundImage}
         style={styles.container}
-        imageStyle={{ resizeMode: 'cover' }}
-      >
-        <Text style={styles.title}>
-          {title}
-        </Text>
-      </ImageBackground>
+        imageStyle={{ resizeMode: 'cover' }} />
     </SafeAreaView>
-  )
+  );
 };
 
 const styles = StyleSheet.create({
+  containerWrapper: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     justifyContent: 'center',
@@ -40,3 +37,5 @@ const styles = StyleSheet.create({
     fontSize: 40,
   },
 });
+
+export default DefaultScreen;

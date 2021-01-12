@@ -1,23 +1,23 @@
 import React from 'react';
-import { Text, Image, Dimensions, StyleSheet, TouchableOpacity } from 'react-native';
+import {
+  Text,
+  Image,
+  Dimensions,
+  StyleSheet,
+  TouchableOpacity,
+} from 'react-native';
 
 const { width } = Dimensions.get('window');
 
 const loadIcon = require('src/assets/icons/refresh.png');
 
-export default LoadMoreActivity = () => (
+const LoadMoreActivity = () => (
   <TouchableOpacity
     style={styles.container}
-    onPress={() => { }}
-    activeOpacity={0.5}
-  >
-    <Text style={styles.text}>
-      Load more activities
-    </Text>
-    <Image
-      source={loadIcon}
-      style={styles.image}
-    />
+    onPress={() => {}}
+    activeOpacity={0.5}>
+    <Text style={styles.text}>Load more activities</Text>
+    <Image source={loadIcon} style={styles.image} />
   </TouchableOpacity>
 );
 
@@ -35,11 +35,13 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#ccc',
-    fontSize: 15
+    fontSize: 15,
   },
   image: {
     width: 30,
     height: 30,
     marginLeft: 10,
-  }
+  },
 });
+
+export default LoadMoreActivity;
