@@ -11,21 +11,26 @@ const Header = () => {
   const [lessons, setlessons] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const upLessonsCount = useCallback(() => {
-    getLessons({ page, count: 10 }).then((response) => {
-      setlessons((currentLessons) => [...currentLessons, ...response.lessons]);
-      setPage((currentPage) => currentPage + 1);
-      if (!total) {
-        setTotal(response.total);
-      }
-    });
-  }, [page, total]);
+    if (!total || lessons.length < total) {
+      setLoading(true);
+      getLessons({ page, count: 10 }).then((response) => {
+        setlessons((currentLessons) => [...currentLessons, ...response.lessons]);
+        setPage((currentPage) => currentPage + 1);
+        if (!total) {
+          setTotal(response.total);
+        }
+        setLoading(false);
+      });
+    }
+  }, [page, total, lessons]);
 
   useEffect(() => {
     upLessonsCount();
   }, []);
-
+  console.log(lessons, total, loading)
   return (
     <View>
       <TopGradient />
@@ -40,8 +45,11 @@ const Header = () => {
         keyExtractor={(item) => `${item.id} ${item.uuid}`}
         horizontal={true}
         ListFooterComponent={() => (
-          lessons.length < total ? <LoadMoreLessons onPress={upLessonsCount} /> : null
+          loading ? <LoadMoreLessons /> : null
         )}
+        onEndReached={() => {
+          if (!loading) upLessonsCount();
+        }}
       />
       <Text style={styles.title}>Activities</Text>
     </View>

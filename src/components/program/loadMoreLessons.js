@@ -1,24 +1,17 @@
 import React from 'react';
 import {
-  TouchableOpacity,
-  Text,
+  View,
   Dimensions,
-  Image,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
-const loadIcon = require('src/assets/icons/refresh.png');
-
-const LessonItem = ({ onPress }) => (
-  <TouchableOpacity
-    style={styles.container}
-    onPress={onPress}
-    activeOpacity={0.5}>
-    <Text style={styles.text}>Load more lessons</Text>
-    <Image source={loadIcon} style={styles.image} />
-  </TouchableOpacity>
+const LessonItem = () => (
+  <View style={styles.container}>
+    <ActivityIndicator size="large" color={'#fff'} />
+  </View>
 );
 
 const styles = StyleSheet.create({
@@ -31,17 +24,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  text: {
-    paddingHorizontal: 10,
-    textAlign: 'center',
-    color: '#ccc',
-    fontSize: 15,
-  },
-  image: {
-    width: 30,
-    height: 30,
-  },
+  }
 });
 
 export default LessonItem;

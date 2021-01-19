@@ -1,27 +1,19 @@
 import React from 'react';
 import {
   View,
-  Text,
-  Image,
   Dimensions,
   StyleSheet,
-  TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 
 const { width } = Dimensions.get('window');
 
-const loadIcon = require('src/assets/icons/refresh.png');
-
-const LoadMoreActivity = ({ onPress, showMore }) => (
+const LoadMoreActivity = ({ show }) => (
   <>
-    {showMore ? (
-      <TouchableOpacity
-        style={styles.container}
-        onPress={onPress}
-        activeOpacity={0.5}>
-        <Text style={styles.text}>Load more activities</Text>
-        <Image source={loadIcon} style={styles.image} />
-      </TouchableOpacity>
+    {show ? (
+      <View style={styles.container}>
+        <ActivityIndicator size="large" color={'#fff'} />
+      </View>
     ) : (
       <View style={styles.emptyComponent} />
     )}
@@ -39,15 +31,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  text: {
-    color: '#ccc',
-    fontSize: 15,
-  },
-  image: {
-    width: 30,
-    height: 30,
-    marginLeft: 10,
   },
   emptyComponent: {
     marginBottom: 110,
