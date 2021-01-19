@@ -5,10 +5,7 @@ const { width } = Dimensions.get('window');
 
 const ActivityItem = ({ item }) => (
   <View style={styles.container}>
-    <Image
-      source={{ uri: item.image }}
-      style={styles.image}
-    />
+    <Image source={{ uri: item.image }} style={styles.image} />
     <View style={styles.textWrapper}>
       <Text style={styles.title}>{item.title}</Text>
       <Text style={styles.text} numberOfLines={2} ellipsizeMode={'tail'}>

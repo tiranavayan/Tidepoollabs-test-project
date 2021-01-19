@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Dimensions,
-  StyleSheet,
-  ActivityIndicator,
-} from 'react-native';
+import { View, Dimensions, StyleSheet, ActivityIndicator } from 'react-native';
 
 const { width } = Dimensions.get('window');
 

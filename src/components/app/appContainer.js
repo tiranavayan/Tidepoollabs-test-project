@@ -1,12 +1,7 @@
 import React from 'react';
-import {
-  View,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-} from 'react-native';
+import { View, SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 
-const AppContainer = ({children}) => {
+const AppContainer = ({ children }) => {
   return (
     <View style={styles.appContainer}>
       <SafeAreaView style={styles.containerWrapper}>

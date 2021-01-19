@@ -1,9 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import {
-  ImageBackground,
-  StyleSheet,
-  FlatList,
-} from 'react-native';
+import { ImageBackground, StyleSheet, FlatList } from 'react-native';
 
 import { Header, ActivityItem, LoadMoreActivity } from 'src/components/program';
 import { AppContainer } from 'src/components/app';
@@ -50,15 +46,13 @@ const ProgramScreen = () => {
           renderItem={ActivityItem}
           keyExtractor={(item) => `${item.id} ${item.title}`}
           ListHeaderComponent={Header}
-          ListFooterComponent={() => (
-            <LoadMoreActivity show={loading} />
-          )}
-          ListEmptyComponent={() => (
-            <LoadMoreActivity show={true} />
-          )}
+          ListFooterComponent={() => <LoadMoreActivity show={loading} />}
+          ListEmptyComponent={() => <LoadMoreActivity show={true} />}
           onEndReachedThreshold={0.5}
           onEndReached={() => {
-            if (!loading) upActivitiesCount();
+            if (!loading) {
+              upActivitiesCount();
+            }
           }}
         />
       </ImageBackground>

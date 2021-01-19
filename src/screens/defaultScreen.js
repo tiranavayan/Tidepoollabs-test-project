@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  ImageBackground,
-  StyleSheet,
-} from 'react-native';
+import { ImageBackground, StyleSheet } from 'react-native';
 
 import { AppContainer } from 'src/components/app';
 
@@ -14,7 +11,8 @@ const DefaultScreen = () => {
       <ImageBackground
         source={backgroundImage}
         style={styles.container}
-        imageStyle={{ resizeMode: 'cover' }} />
+        imageStyle={{ resizeMode: 'cover' }}
+      />
     </AppContainer>
   );
 };

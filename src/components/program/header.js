@@ -17,7 +17,10 @@ const Header = () => {
     if (!total || lessons.length < total) {
       setLoading(true);
       getLessons({ page, count: 10 }).then((response) => {
-        setlessons((currentLessons) => [...currentLessons, ...response.lessons]);
+        setlessons((currentLessons) => [
+          ...currentLessons,
+          ...response.lessons,
+        ]);
         setPage((currentPage) => currentPage + 1);
         if (!total) {
           setTotal(response.total);
@@ -30,7 +33,7 @@ const Header = () => {
   useEffect(() => {
     upLessonsCount();
   }, []);
-  console.log(lessons, total, loading)
+
   return (
     <View>
       <TopGradient />
@@ -44,11 +47,11 @@ const Header = () => {
         renderItem={LessonItem}
         keyExtractor={(item) => `${item.id} ${item.uuid}`}
         horizontal={true}
-        ListFooterComponent={() => (
-          loading ? <LoadMoreLessons /> : null
-        )}
+        ListFooterComponent={() => (loading ? <LoadMoreLessons /> : null)}
         onEndReached={() => {
-          if (!loading) upLessonsCount();
+          if (!loading) {
+            upLessonsCount();
+          }
         }}
       />
       <Text style={styles.title}>Activities</Text>
